@@ -1,5 +1,65 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            /* Youtube fullpage */
+            .ytLandscape {
+                position: relative;
+                padding-bottom: 56.25%;
+            }
+            .ytLandscape iframe {
+                position: absolute;
+                width: 100%;
+                height: 75%;
+                left: 0;
+                right: 0;
+            }
+        </style>
+        <script>
+            function getRndInteger(min, max) {
+              return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            window.addEventListener("keydown", (e) => {
+                //alert(e.key);
+                var t = screen.availHeight/2-200, l = screen.availWidth/2-300, incT = -50, incL = -100;
+                var w = screen.availWidth/3, h = screen.availHeight/2;
+                for(i=0;i<10;i++){
+                    if(t <= 0 || t >= screen.availHeight) {
+                        t = getRndInteger(100, screen.availHeight-100);
+                        incT = -1 * incT;
+                    }
+
+                    if(l <= 0 || l >= screen.availWidth) {
+                        l = getRndInteger(100, screen.availWidth-100);
+                        incL = -1 * incL;
+                    }
+
+                    t = t + incT;
+                    l = l + incL;
+                    const win = window.open("pop.html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l);
+                    //await sleep(3000);
+
+                }
+            });
+
+        </script>
+    </head>
     <body>
-        test first mother fighting1112222333
+        <div class="ytLandscape">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SigIbCVMTzU?autoplay=1&mute=1&loop=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
     </body>
 </html>
