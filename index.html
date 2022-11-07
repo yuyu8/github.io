@@ -17,7 +17,8 @@
         </style>
         <script>
             function getRndInteger(min, max) {
-              return Math.floor(Math.random() * (max - min + 1) ) + min;
+              //return Math.floor(Math.random() * (max - min + 1) ) + min;
+              return Math.ceil(Math.exp(Math.random()*(Math.log(max)-Math.log(min)))*min);
             }
 
             function sleep(ms) {
@@ -26,21 +27,22 @@
 
             window.addEventListener("keydown", (e) => {
                 //alert(e.key);
-                var t = screen.availHeight/2-200, l = screen.availWidth/2-300, incT = -50, incL = -100;
+                var t = screen.availHeight/5, l = screen.availWidth/5, incT = 50, incL = 100;
                 var w = screen.availWidth/3, h = screen.availHeight/2.17;
-                for(i=0;i<2;i++){
+                for(i=0;i<30;i++){
                     if(t <= 0 || t >= screen.availHeight) {
-                        t = getRndInteger(100, screen.availHeight-100);
+                        t = getRndInteger(10, screen.availHeight-100);
                         incT = -1 * incT;
                     }
 
                     if(l <= 0 || l >= screen.availWidth) {
-                        l = getRndInteger(100, screen.availWidth-100);
+                        l = getRndInteger(10, screen.availWidth-100);
                         incL = -1 * incL;
                     }
 
                     t = t + incT;
                     l = l + incL;
+                    console.log(t, l ) ;
                     const win = window.open("pop.html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l+"resizable=no,scrollbar=no,status=no,menubar=no,toolbar=no,location=no");
                     //await sleep(3000);
 
