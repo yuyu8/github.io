@@ -31,12 +31,12 @@
                 var w = screen.availWidth/3, h = screen.availHeight/2.17;
                 for(i=0;i<30;i++){
                     if(t <= 0 || t >= screen.availHeight) {
-                        t = getRndInteger(10, screen.availHeight-100);
+                        t = getRndInteger(10, screen.availHeight-h-100);
                         incT = -1 * incT;
                     }
 
                     if(l <= 0 || l >= screen.availWidth) {
-                        l = getRndInteger(10, screen.availWidth-100);
+                        l = getRndInteger(10, screen.availWidth-w-100);
                         incL = -1 * incL;
                     }
 
