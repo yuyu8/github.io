@@ -31,34 +31,41 @@
                 var w = screen.availWidth/3, h = screen.availHeight/2.17;
 
                 (async() => {
-                for(i=0;i<35;i++){
-                    if(t <= 0 || t >= screen.availHeight || i > 10) {
-                        if(i > 25)
-                            t = getRndInteger(screen.availHeight/2.5, screen.availHeight-h);
-                        else
-                            t = getRndInteger(10, screen.availHeight-h-100);
-
+                for(i=0;i<30;i++){
+                    if(t <= 0 || t >= screen.availHeight || i > 10){
                         incT = -1 * incT;
-                    }else{
-                        t = getRndInteger(100, 500);
-                    }
-
-                    if(l <= 0 || l >= screen.availWidth || i > 10) {
-                        if(i > 25)
-                            l = getRndInteger(screen.availWidth/2, screen.availWidth-w);
-                        else
-                            l = getRndInteger(10, screen.availWidth-w-100);
-
                         incL = -1 * incL;
-                    }else{
-                        l = getRndInteger(300, 900);
                     }
 
+                    if(i<5){
+                        t = getRndInteger(100, 500);
+                        l = getRndInteger(300, 900);
+                    }else if(i<10){
+                        t = getRndInteger(screen.availHeight/4, screen.availHeight-h);
+                        l = getRndInteger(screen.availWidth/2.5, screen.availWidth-w);
+                    }else if(i<15){
+                        t = getRndInteger(10, screen.availHeight/2);
+                        l = getRndInteger(10, screen.availWidth/2);
+                    }else if(i<20){
+                        t = getRndInteger(10, screen.availHeight/3);
+                        l = getRndInteger(screen.availWidth/2, screen.availWidth-w);
+                    }else{
+                        t = getRndInteger(screen.availHeight/3, screen.availHeight-h);
+                        l = getRndInteger(10, screen.availWidth/2);
+                    }
 
                     t = t + incT;
                     l = l + incL;
                     //console.log(t, l) ;
                     const win = window.open("pop.html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l+"resizable=no,scrollbar=no,status=no,menubar=no,toolbar=no,location=no");
+                    if(i<4)
+                        await sleep(400);
+                    else if(i<10)
+                        await sleep(300);
+                    else if(i<15)
+                        await sleep(200);
+                    else
+                        await sleep(100);
                 }
                 })();
             });
