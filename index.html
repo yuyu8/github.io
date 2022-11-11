@@ -27,23 +27,31 @@
 
             window.addEventListener("keydown", (e) => {
                 //alert(e.key);
-                var t = screen.availHeight/5, l = screen.availWidth/5, incT = 50, incL = 100;
+                var t = screen.availHeight/5, l = screen.availWidth/5, incT = 100, incL = 150;
                 var w = screen.availWidth/3, h = screen.availHeight/2.17;
 
                 (async() => {
-                for(i=0;i<30;i++){
+                for(i=0;i<35;i++){
                     if(t <= 0 || t >= screen.availHeight || i > 10) {
-                        t = getRndInteger(10, screen.availHeight-h-100);
+                        if(i > 25)
+                            t = getRndInteger(screen.availHeight/2.5, screen.availHeight-h);
+                        else
+                            t = getRndInteger(10, screen.availHeight-h-100);
+
                         incT = -1 * incT;
                     }else{
-                        t = getRndInteger(100, 400);
+                        t = getRndInteger(100, 500);
                     }
 
                     if(l <= 0 || l >= screen.availWidth || i > 10) {
-                        l = getRndInteger(10, screen.availWidth-w-100);
+                        if(i > 25)
+                            l = getRndInteger(screen.availWidth/2, screen.availWidth-w);
+                        else
+                            l = getRndInteger(10, screen.availWidth-w-100);
+
                         incL = -1 * incL;
                     }else{
-                        l = getRndInteger(300, 800);
+                        l = getRndInteger(300, 900);
                     }
 
 
