@@ -31,7 +31,7 @@
                 var w = screen.availWidth/3, h = screen.availHeight/2.17;
 
                 (async() => {
-                for(i=0;i<30;i++){
+                for(i=0;i<50;i++){
                     if(t <= 0 || t >= screen.availHeight || i > 10){
                         incT = -1 * incT;
                         incL = -1 * incL;
@@ -56,17 +56,19 @@
 
                     t = t + incT;
                     l = l + incL;
-                    var movieNum = getRndInteger(1, 6);
+                    var movieNum = i%6+1;
                     //movieSrc = "resource/movie" + movieNum + ".gif";
                     //console.log(t, l) ;
                     const win = window.open("pop" + movieNum + ".html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l+"resizable=no,scrollbar=no,status=no,menubar=no,toolbar=no,location=no");
                     //win.document.getElementById("movie").src = movieSrc;
 
                     if(i<4)
-                        await sleep(400);
+                        await sleep(500);
                     else if(i<10)
-                        await sleep(300);
+                        await sleep(400);
                     else if(i<15)
+                        await sleep(300);
+                    else if(i<20)
                         await sleep(200);
                     else
                         await sleep(100);
