@@ -7,7 +7,7 @@
                 position: relative;
                 padding-bottom: 56.25%;
             }
-            .ytLandscape iframe {
+            .ytLandscape img {
                 position: absolute;
                 width: 100%;
                 height: 89%;
@@ -56,8 +56,12 @@
 
                     t = t + incT;
                     l = l + incL;
+                    var movieNum = getRndInteger(1, 6);
+                    //movieSrc = "resource/movie" + movieNum + ".gif";
                     //console.log(t, l) ;
-                    const win = window.open("pop.html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l+"resizable=no,scrollbar=no,status=no,menubar=no,toolbar=no,location=no");
+                    const win = window.open("pop" + movieNum + ".html", "popup"+i, "width="+w+",height="+h+",top="+t+",left="+l+"resizable=no,scrollbar=no,status=no,menubar=no,toolbar=no,location=no");
+                    //win.document.getElementById("movie").src = movieSrc;
+
                     if(i<4)
                         await sleep(400);
                     else if(i<10)
@@ -74,15 +78,7 @@
     </head>
     <body>
         <div class="ytLandscape">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/SigIbCVMTzU?autoplay=1&mute=1&loop=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+            <img src="resource/movie1.gif"/>
         </div>
     </body>
 </html>
